@@ -3,8 +3,8 @@
 This project predicts whether a loan will default (1) or not default (0) based on customer and loan attributes.
 
 ## Data
-- File: data/loan.csv
-- Target variable: is_default (constructed from loan_status)
+- Dataset is not included in the repository due to its large size (~430 MB).
+- To run the project locally, place the original `loan.csv` file in a local `data/` folder (which is ignored by git).
 
 ## Main steps in the pipeline
 - Cleaning and preprocessing (missing values, categorical encoding)
