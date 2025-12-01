@@ -1,9 +1,5 @@
 # Credit Risk Prediction with Random Forest
 
-This project predicts whether a loan will **default (1)** or **not default (0)** based on customer and loan attributes.
-
-# Credit Risk Prediction with Random Forest
-
 This project predicts whether a loan will default (1) or not default (0) based on customer and loan attributes.
 
 ## Data
