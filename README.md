@@ -3,14 +3,14 @@
 This project predicts whether a loan will default (1) or not default (0) based on customer and loan attributes.
 
 ## Data
-- Source: LendingClub public loan dataset (downloaded from Kaggle)
+- Source: LendingClub public loan dataset
 - File: `loan.csv` (not included in the repository due to large size ~430 MB)
-- Target variable: `is_default` (constructed from `loan_status`)
+- Each row represents one loan issued on the LendingClub platform
+- Target variable: `is_default` (constructed from the original `loan_status` column)
 
-### Download
-The dataset can be downloaded from:
+### Access
+The dataset can be obtained from public LendingClub archives, for example via Kaggle:
 https://www.kaggle.com/datasets/wordsforthewise/lending-club
-
 
 ## Main steps in the pipeline
 - Cleaning and preprocessing (missing values, categorical encoding)
