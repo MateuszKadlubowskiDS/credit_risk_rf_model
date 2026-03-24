@@ -1,41 +1,69 @@
 # Credit Risk Prediction with Random Forest
 
-This project predicts whether a loan will default (1) or not default (0) based on customer and loan attributes.
+This project builds a machine learning model to predict **loan default risk** using LendingClub data.
+
+## Problem
+
+Binary classification task:
+
+* **1 (Default)** – borrower failed to repay
+* **0 (Non-default)** – loan repaid
+
+The dataset is **highly imbalanced**, making default detection challenging.
+
+---
 
 ## Data
-- Source: LendingClub public loan dataset
-- File: `loan.csv` (not included in the repository due to large size ~430 MB)
-- Each row represents one loan issued on the LendingClub platform
-- Target variable: `is_default` (constructed from the original `loan_status` column)
 
-### Access
-The dataset can be obtained from public LendingClub archives, for example via Kaggle:
-https://www.kaggle.com/datasets/wordsforthewise/lending-club
+* Source: LendingClub public dataset
+* File: `loan.csv` (~430 MB, not included)
+* Each row = one loan
+* Target: `is_default` (derived from `loan_status`)
 
-## Main steps in the pipeline
-- Cleaning and preprocessing (missing values, categorical encoding)
-- Feature engineering (grade mapping, employment length parsing)
-- Handling class imbalance (downsampling majority class)
-- Hyperparameter tuning using GridSearchCV
-- Final Random Forest model training
-- Evaluation: ROC AUC, classification report, confusion matrix
-- Feature importance plot
+Download: https://www.kaggle.com/datasets/wordsforthewise/lending-club
 
-## How to run
-pip install -r requirements.txt  
-python credit_risk_rf_model.py
+---
 
-## Technologies
-Python  
-pandas  
-scikit-learn  
-imbalanced-learn  
-seaborn  
-matplotlib  
+## Pipeline
 
-## My role
-- preprocessing and feature engineering  
-- balancing the dataset  
-- Random Forest with hyperparameter tuning  
-- model evaluation and interpretation  
+* Data cleaning and preprocessing
+* Removal of **data leakage features** (post-loan variables)
+* Feature engineering (e.g. grade encoding, employment length)
+* One-hot encoding of categorical variables
+* Train/test split with stratification
+* Model: **Random Forest (class_weight='balanced')** -- Handling class imbalance
+* Hyperparameter tuning using GridSearchCV
+* Threshold tuning for recall/precision trade-off
+
+---
+
+## Results
+
+* **ROC-AUC:** ~0.71
+* **Recall (default):** ~0.65
+* **Precision (default):** ~0.12
+
+The model prioritizes recall to better identify high-risk borrowers, accepting a higher number of false positives.
+
+---
+
+## Key Insight
+
+Most important feature:
+
+* `grade` (internal credit rating)
+
+Additional important factors:
+
+* debt-to-income ratio (`dti`)
+* credit utilization (`revol_util`)
+* total balances (`tot_cur_bal`, `total_rev_hi_lim`)
+
+---
+## Tech Stack
+
+* Python
+* pandas
+* scikit-learn
+* matplotlib / seaborn
 
